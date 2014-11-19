@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/api/product/search/index.js" libraries="{Node.js Globals, Node.js v0.10.31 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/lib/ESClient.js" libraries="{Node.js Globals, Node.js v0.10.31 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/lib/log.js" libraries="{Node.js Globals, Node.js v0.10.31 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/tasks/createSchema.js" libraries="{Node.js Globals, Node.js v0.10.31 Core Modules}" />
+  </component>
+</project>
+
