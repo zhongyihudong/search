@@ -21,7 +21,17 @@ async.series([function (callback) {
         allowNoIndices: true,
         body: {
             "properties": {
-                "brandName": {
+                "category_name": {
+                    type: "string",
+                    "index": "not_analyzed",
+                    "store": "yes"
+                },
+                "brand_name": {
+                    type: "string",
+                    "index": "not_analyzed",
+                    "store": "yes"
+                },
+                "suppiler_name": {
                     type: "string",
                     "index": "not_analyzed",
                     "store": "yes"

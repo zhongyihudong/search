@@ -3,28 +3,61 @@
  * Created by liangyali on 14-11-19.
  */
 
+var client = require('../../lib/ESClient');
+
 module.exports = function (router) {
 
+    var indexName = "product";
+    var type = "products";
     /**
      * 添加商品
      *
      * PUT /product
      */
     router.put('/', function (req, res) {
-        res.json({});
+
+        var body = req.body || {};
+
+        var id = body.color_id;
+
+        if (!id) {
+            res.json({status: true, message: 'color_id is required!'})
+            return;
+        }
+
+        client.index({
+            index: indexName,
+            type: type,
+            id: '3',
+            body: body
+        }, function (error, response) {
+            if (error) {
+                res.json({status: false, message: error});
+                return;
+            }
+
+            res.json({status: true});
+        });
+
     });
 
     /**
      * 删除商品
      */
-    router.delete('/', function (req, res) {
-        res.json({status: true});
-    });
+    router.delete('/:id', function (req, res) {
 
-    /**
-     * 更新商品
-     */
-    router.post('/', function (req, res) {
+        var id = req.params.id;
 
+        client.delete({
+            index: indexName,
+            type: type,
+            id: id
+        }, function (error, response) {
+            if (error) {
+                res.json({status: false, message: error});
+                return;
+            }
+            res.json({status: true});
+        });
     });
 };
