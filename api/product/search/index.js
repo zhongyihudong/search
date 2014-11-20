@@ -22,7 +22,7 @@ function queryParser(query) {
         size: query.size || 10
     };
 
-    var termFields = ['category_id' , 'brand_id' , 'suppiler_id', 'publish_status', 'q'];
+    var termFields = ['category_id' , 'brand_id' , 'suppiler_id', 'publish_status'];
 
     var termParser = function (query, field) {
         if (query[field]) {
@@ -58,6 +58,20 @@ function queryParser(query) {
         });
     }
 
+    /**
+     * 处理q
+     */
+    if (query['q']) {
+        result.query.bool.must.push({
+            "match": {
+                "q": {
+                    "query": query.q,
+                    "operator": "and"
+                }
+            }
+        });
+    }
+
     return result;
 }
 
@@ -81,7 +95,6 @@ module.exports = function (router) {
 
             /**
              * 商品总数
-             * @type {*|List.total|Function|module.Holder.total|Runner.total}
              */
             var total = result.hits.total;
 

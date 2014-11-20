@@ -28,9 +28,9 @@ module.exports = function (router) {
         client.index({
             index: indexName,
             type: type,
-            id: '3',
+            id: id,
             body: body
-        }, function (error, response) {
+        }, function (error, result) {
             if (error) {
                 res.json({status: false, message: error});
                 return;
@@ -52,7 +52,7 @@ module.exports = function (router) {
             index: indexName,
             type: type,
             id: id
-        }, function (error, response) {
+        }, function (error, result) {
             if (error) {
                 res.json({status: false, message: error});
                 return;
