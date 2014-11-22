@@ -8,6 +8,7 @@ var routen = require('express-enrouten');
  */
 app.use(favicon());
 app.use(express.static(__dirname + '/public'));
+app.disable('x-powered-by');
 
 app.use(routen({
     directory: 'api'

@@ -55,8 +55,8 @@ async.series([function (callback) {
                 },
                 "q": {
                     "type": "string",
-                    "indexAnalyzer": "standard",
-                    "searchAnalyzer": "standard"
+                    "indexAnalyzer": "ik",
+                    "searchAnalyzer": "ik"
                 }
             }
         }
