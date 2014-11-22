@@ -21,15 +21,14 @@ var SPLIT = '__split__%_';
  */
 function queryParser(query) {
 
-    log.debug(JSON.stringify(query, null, ' '));
-
     var result = {
         query: {
             bool: {must: []}
         },
         facets: {},
         from: query.from || 0,
-        size: query.size || 10
+        size: query.size || 10,
+        sort: query.sort || {}
     };
 
     var termFields = ['category_id' , 'brand_id' , 'suppiler_id', 'publish_status'];
