@@ -1,0 +1,37 @@
+{
+    "status": true,
+    "message": "",
+    "data": {
+        "total": 4,
+        "products": [],
+        "categories": [
+            {
+                "id": "3",
+                "name": "综训鞋/健身鞋",
+                "count": 3
+            },
+            {
+                "id": "4",
+                "name": "女鞋",
+                "count": 1
+            }
+        ], "brands": [
+            {
+                "id": "5",
+                "name": "李宁",
+                "count": 3
+            },
+            {
+                "id": "6",
+                "name": "李宁、360",
+                "count": 1
+            }
+        ], "price_ranges": [
+            {
+                "from": 0,
+                "to": 100,
+                "max": 90,
+                "min": 90
+            }
+        ]
+    }}

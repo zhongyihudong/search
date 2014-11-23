@@ -66,11 +66,11 @@ function queryParser(query) {
             }
         };
         if (query['price_range'].from) {
-            priceRange.range.price.gte = query['price_range'].from;
+            priceRange.range.price.from = query['price_range'].from;
         }
 
         if (query['price_range'].to) {
-            priceRange.range.price.lte = query['price_range'].to;
+            priceRange.range.price.to = query['price_range'].to;
         }
         result.query.bool.must.push(priceRange);
     }
@@ -79,11 +79,11 @@ function queryParser(query) {
      * 处理Levels，
      * 需求：小于等于等级的商品
      --------------------------------------------*/
-    if (query['levels']) {
+    if (query['level']) {
         result.query.bool.must.push({
             "range": {
-                "levels": {
-                    "lte": query.levels
+                "level": {
+                    "lte": query.level
                 }
             }
         });
@@ -162,8 +162,6 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
 
         var query = queryParser(req.query);
-
-        log.debug(JSON.stringify(query));
 
         client.search({
             index: 'product',
@@ -250,7 +248,7 @@ module.exports = function (router) {
              * fields:categories,brands,price_ranges
              */
             _.forEach(filters, function (filter) {
-                result[filter._type] = filter.items;
+                result.data[filter._type] = filter.items;
             });
 
             res.json(result);

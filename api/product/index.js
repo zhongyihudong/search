@@ -18,10 +18,10 @@ module.exports = function (router) {
 
         var body = req.body || {};
 
-        var id = body.color_id;
+        var id = body.id;
 
         if (!id) {
-            res.json({status: true, message: 'color_id is required!'})
+            res.json({status: true, message: 'id is required!'})
             return;
         }
 
