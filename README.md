@@ -67,15 +67,11 @@
 
 ### 测试接口
 ``` sh
-curl -XPOST http://123.57.5.118/products/search -d '
-{q:'test'}
-'
-```
-
-``` js
+curl -XPOST http://123.57.5.118/products/search -d'
 {
 	brand_id:5
 }
+'
 ```
 
 
