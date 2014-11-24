@@ -159,7 +159,12 @@ function queryParser(query) {
 }
 
 module.exports = function (router) {
+
     router.get('/', function (req, res) {
+        res.json({status: false, message: 'not support get,only support post'});
+    });
+
+    router.post('/', function (req, res) {
 
         var query = queryParser(req.query);
 
