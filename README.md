@@ -125,7 +125,8 @@ sort|排序参数 |[]
                 "from": 0,
                 "to": 100,
                 "max": 90,
-                "min": 90
+                "min": 90,
+                "count":1
             }
         ]
     }}
@@ -148,7 +149,7 @@ data.price_ranges|价格区间聚合信息|[]
 ##### 请求参数
 ``` js
 {
-	id:1 //required
+	id:'s01-90-001' //required
 	category_id:1,
 	category_name:'test'
 	...

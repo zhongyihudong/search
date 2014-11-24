@@ -30,6 +30,11 @@ async.series([function (callback) {
                 }
             },
             "properties": {
+                "id": {
+                    type: "string",
+                    "store": "yes",
+                    "copy_to": "q"
+                },
                 "product_name": {
                     type: "string",
                     "store": "yes",
