@@ -18,8 +18,6 @@
 10 | 品牌的聚合 | 完成
 11 | 自定义排序 | 完成
 
-### 测试服务器地址
-``` http://123.57.5.118 ```
 
 ### 商品搜索接口
 ***
@@ -67,7 +65,7 @@
 
 ### 测试接口
 ``` sh
-curl -XPOST http://123.57.5.118/products/search -d'
+curl -XPOST http://127.0.0.1/products/search -d'
 {
 	brand_id:5
 }
