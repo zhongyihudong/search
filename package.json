@@ -21,7 +21,7 @@
     "express-http-proxy": "^0.2.2",
     "lodash": "^2.4.1",
     "pine": "^1.1.0",
-    "request": "^2.45.0",
+    "request": "^2.48.0",
     "static-favicon": "^2.0.0-alpha"
   }
 }

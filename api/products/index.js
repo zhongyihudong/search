@@ -36,7 +36,7 @@ module.exports = function (router) {
                 return;
             }
 
-            res.json({status: true});
+            res.json({status: true, message: ''});
         });
 
     });
@@ -46,7 +46,12 @@ module.exports = function (router) {
      */
     router.delete('/:id', function (req, res) {
 
-        var id = req.params.id;
+        var id = req.params.id || 0;
+
+        if (id === 0) {
+            res.json({status: false, message: 'id is required!'});
+            return;
+        }
 
         client.delete({
             index: indexName,
@@ -57,7 +62,7 @@ module.exports = function (router) {
                 res.json({status: false, message: error});
                 return;
             }
-            res.json({status: true});
+            res.json({status: true, message: ''});
         });
     });
 };
