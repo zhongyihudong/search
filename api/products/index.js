@@ -18,11 +18,9 @@ module.exports = function (router) {
 
         var body = req.body || {};
 
-        var id = body.product_id || '';
+        var id = body['id'] || '';
 
         console.log(body);
-
-        console.log();
 
         if (id === '') {
             res.json({status: false, message: 'id is required!'})
