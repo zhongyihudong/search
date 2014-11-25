@@ -20,6 +20,10 @@ module.exports = function (router) {
 
         var id = body.id;
 
+        console.log(body);
+
+        console.log(body);
+
         if (!id) {
             res.json({status: true, message: 'id is required!'})
             return;
