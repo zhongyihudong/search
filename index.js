@@ -9,6 +9,7 @@ var bodyParser= require('body-parser');
  */
 app.use(favicon());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(express.static(__dirname + '/public'));
 app.disable('x-powered-by');
 
