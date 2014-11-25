@@ -25,7 +25,7 @@ module.exports = function (router) {
         console.log();
 
         if (!id) {
-            res.json({status: true, message: 'id is required!'})
+            res.json({status: false, message: 'id is required!'})
             return;
         }
 
