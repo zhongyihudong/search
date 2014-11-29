@@ -17,7 +17,7 @@ app.use(routen({
     directory: 'api'
 }));
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 app.listen(port, function () {
     console.log("server is started, PORT:" + port);
