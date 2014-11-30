@@ -6,7 +6,7 @@ var request = require('request');
 
 request({
     method: 'DELETE',
-    url: 'http://127.0.0.1:3000/products/2'
+    url: 'http://127.0.0.1/products/2'
 }, function (error, response, body) {
     console.log(error);
     console.log(body);
@@ -17,7 +17,7 @@ request({
     headers: {
         'Content-Type': 'application/json'
     },
-    url: 'http://127.0.0.1:3000/products',
+    url: 'http://127.0.0.1/products',
     body: JSON.stringify({id: 10})
 }, function (error, response, body) {
     console.log(error);
