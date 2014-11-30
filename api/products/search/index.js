@@ -166,7 +166,7 @@ module.exports = function (router) {
 
     router.post('/', function (req, res) {
 
-        var query = queryParser(req.query);
+        var query = queryParser(req.body);
 
         client.search({
             index: 'product',
