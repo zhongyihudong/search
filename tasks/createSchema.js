@@ -20,36 +20,35 @@ async.series([function (callback) {
         type: 'products',
         allowNoIndices: true,
         body: {
-            "products": {
-                "_all": {
-                    "indexAnalyzer": "ik",
-                    "searchAnalyzer": "ik",
-                    "term_vector": "no",
-                    "store": "false"
-                }},
+
             "properties": {
                 "id": {
                     type: "string",
-                    "store": "yes"
+                    "store": "yes",
+                    "copy_to": "q"
                 },
                 "product_name": {
                     type: "string",
-                    "store": "yes"
+                    "store": "yes",
+                    "copy_to": "q"
                 },
                 "category_name": {
                     type: "string",
                     "index": "not_analyzed",
-                    "store": "yes"
+                    "store": "yes",
+                    "copy_to": "q"
                 },
                 "brand_name": {
                     type: "string",
                     "index": "not_analyzed",
-                    "store": "yes"
+                    "store": "yes",
+                    "copy_to": "q"
                 },
                 "suppiler_name": {
                     type: "string",
                     "index": "not_analyzed",
-                    "store": "yes"
+                    "store": "yes",
+                    "copy_to": "q"
                 },
                 "q": {
                     "type": "string",

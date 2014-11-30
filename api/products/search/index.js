@@ -95,9 +95,9 @@ function queryParser(query) {
     if (query['q']) {
         result.query.bool.must.push({
             "match": {
-                "query_string": {
-                    default_field: '_all',
-                    query: query.q
+                "q": {
+                    "query": query.q,
+                    "operator": "and"
                 }
             }
         });
@@ -166,7 +166,7 @@ module.exports = function (router) {
 
     router.post('/', function (req, res) {
 
-        var query = queryParser(req.body);
+        var query = queryParser(req.body || req.query);
 
         client.search({
             index: 'product',
