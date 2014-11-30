@@ -95,9 +95,9 @@ function queryParser(query) {
     if (query['q']) {
         result.query.bool.must.push({
             "match": {
-                "_all": {
-                    "query": query.q,
-                    "operator": "and"
+                "query_string": {
+                    default_field: '_all',
+                    query: query.q
                 }
             }
         });
