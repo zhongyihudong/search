@@ -12,10 +12,10 @@ var indexName = 'product';
 client.index({
     index: indexName,
     type: 'products',
-    id: '5',
+    id: '6',
     body: {
         product_id: 3,
-        product_name: "正品秋冬功能鞋迈凯奇健步鞋男女健走鞋助长鞋减肥瘦身运动鞋摇摇",
+        product_name: "正品秋冬功能鞋迈凯LINING步鞋男女健走鞋助长鞋减肥瘦身运动鞋摇摇",
         category_name: "女鞋",
         category_id: 4,
         price: 280.01,

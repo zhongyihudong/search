@@ -95,7 +95,7 @@ function queryParser(query) {
     if (query['q']) {
         result.query.bool.must.push({
             "match": {
-                "q": {
+                "_all": {
                     "query": query.q,
                     "operator": "and"
                 }
