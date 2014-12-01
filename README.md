@@ -65,7 +65,7 @@
 
 ### 测试接口
 ``` sh
-curl -XPOST http://127.0.0.1/products/search -d'
+curl -XPOST http://127.0.0.1/products/search --header 'Content-Type:application/json' -d'
 {
 	brand_id:5
 }

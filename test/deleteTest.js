@@ -6,7 +6,7 @@ var request = require('request');
 
 request({
     method: 'DELETE',
-    url: 'http://127.0.0.1/products/2'
+    url: 'http://127.0.0.1:9200/products/2'
 }, function (error, response, body) {
     console.log(error);
     console.log(body);
@@ -17,8 +17,8 @@ request({
     headers: {
         'Content-Type': 'application/json'
     },
-    url: 'http://127.0.0.1/products',
-    body: JSON.stringify({id: 10})
+    url: 'http://s.liangyali.com/products',
+    body: JSON.stringify({id: 10,product_name:"nike运动鞋"})
 }, function (error, response, body) {
     console.log(error);
     console.log(body);
@@ -30,7 +30,7 @@ request({
         'Content-Type': 'application/json'
     },
     url: 'http://s.liangyali.com/products/search',
-    body: JSON.stringify({category_id: 40})
+    body: JSON.stringify({q:"nike"})
 }, function (error, response, body) {
     console.log(error);
     console.log(body);
