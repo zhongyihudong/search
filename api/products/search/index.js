@@ -60,7 +60,7 @@ function queryParser(query) {
 
         var priceRange = {
             range: {
-                'price': {
+                'sale_price': {
 
                 }
             }
@@ -123,7 +123,7 @@ function queryParser(query) {
     if (query['facet_price_ranges'] && query['facet_price_ranges'] !== null) {
         result.facets['price_ranges'] = {
             range: {
-                field: 'price',
+                field: 'sale_price',
                 ranges: query['facet_price_ranges']
             }
         };
