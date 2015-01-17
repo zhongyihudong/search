@@ -261,3 +261,94 @@ module.exports = function (router) {
 
     });
 };
+
+    // 统计分类信息
+    router.post("/stat_cat", function (req, res) {
+
+        var query = queryParser(req.body || req.query);
+        //统计所有分类
+        query.aggs = {
+            "all_categorys": {
+                "terms": {
+                    "field": "category_id",
+                    "size": 100000
+                }
+            }
+        };
+
+        query.size = 0;
+        //搜索
+        client.search({
+            index: 'product',
+            type: 'products',
+            body: query
+        }, function (err, result) {
+            if (err) {
+                res.json({status: false, message: err.message});
+                return;
+            }
+
+            // 获取分组的分类信息
+            var groupCategorys = result.aggregations.all_categorys;
+            var catTotal = groupCategorys.buckets.length;
+            var items = groupCategorys.buckets;
+
+            var result = {
+                status: true,
+                data: {
+                    pro_total: result.hits.total,
+                    cat_total: catTotal,
+                    data: items
+                }
+            };
+
+            res.json(result);
+            return;
+        });
+    });
+
+    // 统计品牌
+    router.post("/stat_brand",function(req,res){
+        var query = queryParser(req.body || req.query);
+        //统计所有分类
+        query.aggs = {
+            "all_brands": {
+                "terms": {
+                    "field": "brand_id",
+                    "size": 100000
+                }
+            }
+        };
+
+        query.size = 0;
+        //搜索
+        client.search({
+            index: 'product',
+            type: 'products',
+            body: query
+        }, function (err, result) {
+            if (err) {
+                res.json({status: false, message: err.message});
+                return;
+            }
+
+            // 获取分组的分类信息
+            var groupBrands = result.aggregations.all_brands;
+            var catTotal = groupBrands.buckets.length;
+            var items = groupBrands.buckets;
+
+            var result = {
+                status: true,
+                data: {
+                    pro_total: result.hits.total,
+                    cat_total: catTotal,
+                    data: items
+                }
+            };
+
+            res.json(result);
+            return;
+        })
+    })
+
+};
