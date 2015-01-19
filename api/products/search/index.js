@@ -31,7 +31,7 @@ function queryParser(query) {
         sort: query.sort || {}
     };
 
-    var termFields = ['category_id' , 'brand_id' , 'suppiler_id', 'publish_status'];
+    var termFields = ['category_id', 'brand_id', 'supplier_id', 'publish_status'];
 
     var termParser = function (query, field) {
         if (query[field]) {
@@ -60,9 +60,7 @@ function queryParser(query) {
 
         var priceRange = {
             range: {
-                'sale_price': {
-
-                }
+                'sale_price': {}
             }
         };
         if (query['price_range'].from) {
@@ -159,14 +157,13 @@ function queryParser(query) {
 }
 
 module.exports = function (router) {
-
     router.get('/', function (req, res) {
         res.json({status: false, message: 'not support get,only support post'});
     });
 
     router.post('/', function (req, res) {
-
         var query = queryParser(req.body || req.query);
+        console.log(JSON.stringify(query));
 
         client.search({
             index: 'product',
@@ -227,25 +224,25 @@ module.exports = function (router) {
             var facetKeys = _.keys(result.facets);
             var filters = _.map(facetKeys, function (facetKey) {
 
-                var facetItem = result.facets[facetKey] || {};
+                    var facetItem = result.facets[facetKey] || {};
 
-                // process terms type
-                if (facetItem._type === 'terms') {
-                    var terms = result.facets[facetKey].terms;
-                    return facetTermProcess(facetKey, terms);
-                }
+                    // process terms type
+                    if (facetItem._type === 'terms') {
+                        var terms = result.facets[facetKey].terms;
+                        return facetTermProcess(facetKey, terms);
+                    }
 
-                //process range type for price range
-                if (facetItem._type === 'range') {
-                    var terms = result.facets[facetKey].ranges;
-                    return facetRangeProcess(facetKey, terms);
-                }
+                    //process range type for price range
+                    if (facetItem._type === 'range') {
+                        var terms = result.facets[facetKey].ranges;
+                        return facetRangeProcess(facetKey, terms);
+                    }
 
-                return undefined;
-            }) || [];
+                    return undefined;
+                }) || [];
 
 
-            var result = { status: true, data: { total: total, data: products}};
+            var result = {status: true, data: {total: total, data: products}};
 
             /**
              * 对返回结果进行赋值
@@ -260,10 +257,9 @@ module.exports = function (router) {
         });
 
     });
-};
 
     // 统计分类信息
-    router.post("/stat_cat", function (req, res) {
+    router.post("/category", function (req, res) {
 
         var query = queryParser(req.body || req.query);
         //统计所有分类
@@ -308,7 +304,7 @@ module.exports = function (router) {
     });
 
     // 统计品牌
-    router.post("/stat_brand",function(req,res){
+    router.post("/brand", function (req, res) {
         var query = queryParser(req.body || req.query);
         //统计所有分类
         query.aggs = {
@@ -352,3 +348,6 @@ module.exports = function (router) {
     })
 
 };
+
+
+
